@@ -1,0 +1,32 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: "tap-ecbexchangerates"
+default_environment: test
+environments:
+  - name: test
+plugins:
+  extractors:
+    - name: "tap-ecbexchangerates"
+      namespace: "tap_ecbexchangerates"
+      pip_url: -e .
+      capabilities:
+        - state
+        - catalog
+        - discover
+        - about
+        - stream-maps
+      config:
+        start_date: "2024-01-01"
+        currencies: ["USD", "CZK", "GBP"]
+      settings:
+        # TODO: To configure using Meltano, declare settings and their types here:
+        - name: username
+        - name: password
+          kind: password
+          sensitive: true
+        - name: start_date
+          value: "2024-01-01"
+  loaders:
+    - name: target-jsonl
+      variant: andyh1203
+      pip_url: target-jsonl

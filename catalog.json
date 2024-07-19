@@ -1,0 +1,97 @@
+{
+  "streams": [
+    {
+      "tap_stream_id": "exchange_rates",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "date",
+        "base_currency",
+        "target_currency"
+      ],
+      "schema": {
+        "properties": {
+          "date": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "base_currency": {
+            "description": "The curency 'from'",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "target_currency": {
+            "description": "The currency 'to",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exchange_rate": {
+            "description": "The exchange rate",
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "exchange_rates",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "date"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "base_currency"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "target_currency"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "exchange_rate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "date",
+              "base_currency",
+              "target_currency"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

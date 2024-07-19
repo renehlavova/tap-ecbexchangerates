@@ -1,0 +1,87 @@
+[tool.poetry]
+name = "tap-ecbexchangerates"
+version = "0.0.1"
+description = "`tap-ecbexchangerates` is a Singer tap for ECB currency exchange rates, built with the Meltano Singer SDK."
+readme = "README.md"
+authors = ["Renata Hlavova <hlavova.renata@gmail.com>", "Tomas Votava <info@tomasvotava.eu>"]
+keywords = ["ELT", "ECB", "exchange rates", "currency"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+singer-sdk = "^0.26.0"
+requests = "^2.31.0"
+backoff = "^2.2.1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.10.0"
+ruff = "^0.4.4"
+types-requests = "^2.31.0.20240406"
+pre-commit = "^3.7.1"
+
+[tool.ruff]
+src = ["tap_ecbexchangerates"]
+target-version = "py310"
+line-length = 120
+
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+    "B",
+    "I",
+    "N",
+    "UP",
+    "S",
+    "A",
+    "Q",
+    "DTZ",
+    "PT",
+    "SIM",
+    "PTH",
+    "RUF",
+    "T20",
+    "ASYNC",
+    "C4",
+    "DJ",
+    "ISC",
+    "TCH",
+    "TD",
+]
+ignore = [
+    "DTZ005",
+    "DTZ007",
+    "DTZ011", # allow timezone-unaware datetimes, this is not critical and make things easier for us
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["tap_ecbexchangerates"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[build-system]
+requires = ["poetry-core==1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+# CLI declaration
+tap-ecbexchangerates = 'tap_ecbexchangerates.tap:TapECBEchangeRates.cli'
+
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["requests.*"]
+ignore_missing_imports = true
