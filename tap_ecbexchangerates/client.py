@@ -153,7 +153,7 @@ class ECBClient:
                     target_currency=target_currency,
                     exchange_rate=value,
                 )
-                for key, value in dict(zip(dates, rates, strict=False)).items()
+                for key, value in dict(zip(dates, rates)).items()
             ],
             end_date=end_date,
         )
