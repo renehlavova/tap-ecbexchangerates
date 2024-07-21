@@ -3,40 +3,24 @@
     {
       "tap_stream_id": "exchange_rates",
       "replication_method": "FULL_TABLE",
-      "key_properties": [
-        "date",
-        "base_currency",
-        "target_currency"
-      ],
+      "key_properties": ["date", "base_currency", "target_currency"],
       "schema": {
         "properties": {
           "date": {
-            "format": "date",
-            "type": [
-              "string",
-              "null"
-            ]
+            "format": "date-time",
+            "type": ["string", "null"]
           },
           "base_currency": {
             "description": "The curency 'from'",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "target_currency": {
             "description": "The currency 'to",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "exchange_rate": {
             "description": "The exchange rate",
-            "type": [
-              "number",
-              "null"
-            ]
+            "type": ["number", "null"]
           }
         },
         "type": "object"
@@ -44,37 +28,25 @@
       "stream": "exchange_rates",
       "metadata": [
         {
-          "breadcrumb": [
-            "properties",
-            "date"
-          ],
+          "breadcrumb": ["properties", "date"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "base_currency"
-          ],
+          "breadcrumb": ["properties", "base_currency"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "target_currency"
-          ],
+          "breadcrumb": ["properties", "target_currency"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "exchange_rate"
-          ],
+          "breadcrumb": ["properties", "exchange_rate"],
           "metadata": {
             "inclusion": "available"
           }
@@ -84,11 +56,7 @@
           "metadata": {
             "inclusion": "available",
             "selected": true,
-            "table-key-properties": [
-              "date",
-              "base_currency",
-              "target_currency"
-            ]
+            "table-key-properties": ["date", "base_currency", "target_currency"]
           }
         }
       ]

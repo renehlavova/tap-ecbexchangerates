@@ -5,6 +5,7 @@ import datetime
 import logging
 from collections import defaultdict
 from collections.abc import Iterable
+from typing import Optional
 from urllib.parse import urljoin
 
 import backoff
@@ -110,7 +111,7 @@ class ECBClient:
         self,
         target_currency: str,
         start_date: datetime.date,
-        end_date: datetime.date | None = None,
+        end_date: Optional[datetime.date] = None,
     ) -> list[ExchangeRate]:
         end_date = end_date or datetime.date.today()
         resource = self._resource(target_currency)
