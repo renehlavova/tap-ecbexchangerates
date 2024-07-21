@@ -22,7 +22,7 @@ class ExchangeRatesStream(Stream):
     primary_keys: ClassVar[list[str]] = ["date", "base_currency", "target_currency"]
 
     schema = th.PropertiesList(
-        th.Property("date", th.DateType),
+        th.Property("date", th.DateTimeType),
         th.Property(
             "base_currency",
             th.StringType,
