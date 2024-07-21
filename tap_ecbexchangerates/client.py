@@ -73,7 +73,7 @@ class ECBClient:
         return resource
 
     def _fill_missing_dates(
-        self, data: list[ExchangeRate], end_date: datetime.date | None = None
+        self, data: list[ExchangeRate], end_date: Optional[datetime.date] = None
     ) -> list[ExchangeRate]:
         """Fill missing conversions with the last known, typically during weekends and holidays"""
 

@@ -4,7 +4,7 @@ import datetime
 import logging
 from collections.abc import Iterable
 from dataclasses import asdict
-from typing import Any, ClassVar
+from typing import Any, ClassVar, Dict, Optional, Tuple
 
 from singer_sdk import typing as th  # JSON Schema typing helpers
 from singer_sdk.streams import Stream
@@ -41,8 +41,8 @@ class ExchangeRatesStream(Stream):
     ).to_dict()
 
     def get_records(
-        self, context: dict[str, Any] | None
-    ) -> Iterable[dict[str, Any] | tuple[dict[str, Any], dict[str, Any] | None]]:
+        self, context: Optional[Dict[str, Any]]
+    ) -> Iterable[Tuple[Dict[str, Any], Optional[Dict[str, Any]]]]:
         state = self.get_context_state(context)
         previous_end_date = state.get("end_date")
         start_date: datetime.date
