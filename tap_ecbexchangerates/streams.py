@@ -47,11 +47,15 @@ class ExchangeRatesStream(Stream):
         previous_end_date = state.get("end_date")
         start_date: datetime.date
         end_date: datetime.date
+
         if previous_end_date:
             logger.info(f"Resuming download using {previous_end_date=}")
             start_date = datetime.datetime.strptime(
                 previous_end_date, "%Y-%m-%d"
-            ).date()
+            ).date() - datetime.timedelta(days=7)
+            logger.info(
+                f"New start date: {start_date} to cover missing weekend and holiday data"
+            )
         else:
             start_date = datetime.datetime.strptime(
                 self.config.get("start_date", "2000-01-01"), "%Y-%m-%d"
